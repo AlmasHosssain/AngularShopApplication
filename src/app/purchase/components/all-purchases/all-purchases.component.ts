@@ -44,7 +44,7 @@ export class AllPurchasesComponent implements OnInit, AfterViewInit {
           let obj = {
             id : element.id,
             invoiceNo: element.invoiceNo,
-            supplierName: element.suppler,
+            suppler: element.suppler,
             purchaseDate : element.purchaseDate,
             totalAmount : element.grandTotal
           }

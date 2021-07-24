@@ -1,7 +1,7 @@
 export interface Item{
   id?: string,
   invoiceNo : number,
-  supplierName : string,
+  suppler : string,
   purchaseDate : any,
   totalAmount : number,
 }

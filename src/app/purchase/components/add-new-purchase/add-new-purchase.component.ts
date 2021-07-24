@@ -159,7 +159,8 @@ export class AddNewPurchaseComponent implements OnInit, OnDestroy {
   }
 
   mapFormValueToSinglePurchase() {
-    let { details, discount, dueAmount, grandTotal, invoiceNo, mainTotal, paidAmount, paymentType, purchaseDate, productDetails } = this.purchaseDetails.value;
+    let {suppler, details, discount, dueAmount, grandTotal, invoiceNo, mainTotal, paidAmount, paymentType, purchaseDate, productDetails } = this.purchaseDetails.value;
+    this.singlePurchase.suppler = suppler;
     this.singlePurchase.details = details;
     this.singlePurchase.discount = discount;
     this.singlePurchase.dueAmount = dueAmount;
