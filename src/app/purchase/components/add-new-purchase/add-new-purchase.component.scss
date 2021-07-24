@@ -1,0 +1,38 @@
+.star {
+  color: red;
+}
+
+mat-form-field {
+  //font-size: 11px;
+  width: 375px;
+}
+
+.mat-label {
+  font-size: small !important;
+  color: #231da3 !important;
+}
+
+.mat-card-title {
+  margin: 8px 30% !important;
+}
+
+.mat-card-title {
+  background-color: #1D2345;
+  text-align: center;
+  padding: 9px;
+  margin-bottom: 15px !important;
+  border-bottom-right-radius: 9px;
+  border-bottom-left-radius: 9px;
+  color: white;
+}
+
+.main{
+  font-size: 12px;
+}
+
+.view-input {
+  touch-action: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+

@@ -1,0 +1,245 @@
+<mat-card class="m-3">
+  <mat-card-title style="margin-top: -16px !important;">
+    <mat-label class="font-lg" style="font-weight: bold;">{{headingTitle}}</mat-label>
+  </mat-card-title>
+  <form [formGroup]="purchaseDetails">
+    <mat-card class="m-3">
+      <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-around start">
+        <div fxLayout="column">
+          <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="center start" fxLayoutGap.sm="1px"
+            fxLayoutAlign="space-between center" fxLayoutGap="40px">
+            <p>Supplier <span class="star">*</span></p>
+            <mat-form-field appearance="outline">
+              <mat-label>Select One</mat-label>
+              <mat-select formControlName="suppler" required>
+                <mat-option *ngFor="let supplerName of supplerNames" [value]="supplerName">
+                  {{supplerName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+            fxLayoutAlign="space-between center" fxLayoutGap="40px">
+            <p>Invoice No <span class="star">*</span></p>
+            <mat-form-field appearance="outline">
+              <mat-label>Invoice No</mat-label>
+              <input type="number" [readonly]="action=='view'" formControlName="invoiceNo" matInput required placeholder="Invoice No">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+            fxLayoutAlign="space-between center" fxLayoutGap="40px">
+            <p>Payment Type <span class="star">*</span></p>
+            <mat-form-field appearance="outline">
+              <mat-label>Select One</mat-label>
+              <mat-select formControlName="paymentType" required>
+                <mat-option *ngFor="let paymentType of paymentTypes" [value]="paymentType">
+                  {{paymentType}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div fxLayout="column">
+          <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+            fxLayout.sm="column" fxLayoutAlign.xs="start start" fxLayoutGap.xs="1px"
+            fxLayoutAlign="space-between center" fxLayoutGap="40px">
+            <p>Purchase Date <span class="star">*</span></p>
+            <mat-form-field appearance="outline">
+              <mat-label>Purchase date</mat-label>
+              <input matInput [class.view-input]="action=='view'" [readonly]="action=='view'" [matDatepicker]="picker" formControlName="purchaseDate" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+            fxLayoutAlign="space-between center" fxLayoutGap="40px">
+            <p>Details</p>
+            <mat-form-field appearance="outline">
+              <mat-label>Details</mat-label>
+              <textarea [readonly]="action=='view'" matInput formControlName="details" placeholder="Entry the details about the product"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <mat-card class="mx-2">
+        <div fxLayout="column" fxLayoutGap="-15px">
+          <div *ngIf="!deviceMd" fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <p style="margin-left: 15px !important;">Item Information <span class="star">*</span></p>
+            <p style="margin-right: 30px !important;">Stock/Qnt</p>
+            <p>Qnty <span class="star">*</span></p>
+            <p>Rate <span class="star">*</span></p>
+            <p>Total</p>
+            <p style="margin-right: 15px !important;">Action</p>
+          </div>
+          <div class="main" formArrayName="productDetails" *ngFor="let item of getProductIntoList(); let i = index">
+            <div [formGroupName]="i">
+              <div *ngIf="deviceMd">
+                <mat-divider *ngIf="i>0" ></mat-divider>
+                <div fxLayout="column" class="my-2">
+                  <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+                    fxLayoutAlign.xs="start start">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                      <p>Item Information <span class="star">*</span></p>
+                      <ng-container *ngIf="i == 0; else addNotPresent">
+                        <button (click)="addProductInfoBtn()" type="button" mat-icon-button>
+                          <mat-icon class="mat-18" color="primary">add_box</mat-icon>
+                        </button>
+                        <ng-container *ngIf="getProductIntoList().length>1; else deleteNotPresent">
+                          <button (click)="removeProductInfoBtn(i)" type="button" mat-icon-button>
+                            <mat-icon class="mat-18" color="accent">delete_forever</mat-icon>
+                          </button>
+                        </ng-container>
+
+                        <ng-template #deleteNotPresent>
+                          <p style="color: white;background-color: white; margin-left: 12px !important;"
+                            mat-icon-button>
+                            <mat-icon class="mat-18">add_box</mat-icon>
+                          </p>
+                        </ng-template>
+                      </ng-container>
+
+                      <ng-template #addNotPresent>
+                        <button (click)="removeProductInfoBtn(i)" type="button" mat-icon-button>
+                          <mat-icon class="mat-18" color="accent">delete_forever</mat-icon>
+                        </button>
+                        <p style="color: white;background-color: white; margin-left: 12px !important;" mat-icon-button>
+                          <mat-icon class="mat-18">add_box</mat-icon>
+                        </p>
+                      </ng-template>
+                    </div>
+                    <mat-form-field appearance="outline">
+                      <input formControlName="productName" matInput required placeholder="Product Name">
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+                    fxLayoutGap="40px" fxLayoutAlign.xs="start start">
+                    <p>Stock/Qnt</p>
+                    <mat-form-field appearance="outline">
+                      <input formControlName="stock" type="number" matInput>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+                    fxLayoutGap="60px" fxLayoutAlign.xs="start start">
+                    <p>Qnty <span class="star">*</span></p>
+                    <mat-form-field appearance="outline">
+                      <input formControlName="qnty" type="number" matInput required>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+                    fxLayoutGap="60px" fxLayoutAlign.xs="start start">
+                    <p>Rate <span class="star">*</span></p>
+                    <mat-form-field appearance="outline">
+                      <input formControlName="rate" type="number" matInput required>
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="row wrap" fxLayout.sm="column" fxLayoutAlign.sm="start start" fxLayoutGap.sm="1px"
+                    fxLayoutGap="60px" fxLayoutAlign.xs="start start">
+                    <p>Total</p>
+                    <mat-form-field appearance="outline">
+                      <input formControlName="total" type="number" matInput required>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="column" *ngIf="!deviceMd">
+                <div class="mx-2" fxLayout="row" fxLayoutAlign="space-around start">
+                  <mat-form-field class="mx-2" appearance="outline">
+                    <input [readonly]="action=='view'" formControlName="productName" matInput required placeholder="Product Name">
+                  </mat-form-field>
+                  <mat-form-field class="mx-2" appearance="outline">
+                    <input [readonly]="action=='view'" formControlName="stock" type="number" matInput>
+                  </mat-form-field>
+                  <mat-form-field class="mx-2" appearance="outline">
+                    <input [readonly]="action=='view'" formControlName="qnty" type="number" matInput required>
+                  </mat-form-field>
+                  <mat-form-field class="mx-2" appearance="outline">
+                    <input [readonly]="action=='view'" formControlName="rate" type="number" matInput required>
+                  </mat-form-field>
+                  <mat-form-field class="mx-2" appearance="outline">
+                    <input [readonly]="action=='view'" formControlName="total" type="number" matInput required>
+                  </mat-form-field>
+                  <div fxLayout="row" fxLayoutAlign="space-around start">
+
+                    <ng-container *ngIf="i == 0; else addNotPresent">
+                      <button (click)="addProductInfoBtn()" type="button" mat-icon-button>
+                        <mat-icon class="mat-18" color="primary">add_box</mat-icon>
+                      </button>
+                      <ng-container *ngIf="getProductIntoList().length>1; else deleteNotPresent">
+                        <button (click)="removeProductInfoBtn(i)" type="button" mat-icon-button>
+                          <mat-icon class="mat-18" color="accent">delete_forever</mat-icon>
+                        </button>
+                      </ng-container>
+
+                      <ng-template #deleteNotPresent>
+                        <p style="color: white;background-color: white; margin-left: 12px !important;" mat-icon-button>
+                          <mat-icon class="mat-18">add_box</mat-icon>
+                        </p>
+                      </ng-template>
+                    </ng-container>
+
+                    <ng-template #addNotPresent>
+                      <button (click)="removeProductInfoBtn(i)" type="button" mat-icon-button>
+                        <mat-icon class="mat-18" color="accent">delete_forever</mat-icon>
+                      </button>
+                      <p style="color: white;background-color: white; margin-left: 12px !important;" mat-icon-button>
+                        <mat-icon class="mat-18">add_box</mat-icon>
+                      </p>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main" fxLayout="column" fxLayoutGap="-15px">
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="35px">
+              <p><b>Total : </b></p>
+              <mat-form-field appearance="outline" [style.width.px]="200">
+                <input [readonly]="action=='view'" type="number" formControlName="mainTotal" matInput required>
+              </mat-form-field>
+              <p></p>
+              <p></p>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="36px">
+              <p><b>Discount : </b></p>
+              <mat-form-field appearance="outline" [style.width.px]="200">
+                <input [readonly]="action=='view'" type="number" formControlName="discount" matInput>
+              </mat-form-field>
+              <p></p>
+              <p></p>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="36px">
+              <p><b>Grand Total : </b></p>
+              <mat-form-field appearance="outline" [style.width.px]="200">
+                <input [readonly]="action=='view'" type="number" formControlName="grandTotal" matInput>
+              </mat-form-field>
+              <p></p>
+              <p></p>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="36px">
+              <p><b>Paid Amount : </b></p>
+              <mat-form-field appearance="outline" [style.width.px]="200">
+                <input [readonly]="action=='view'" type="number" formControlName="paidAmount" matInput>
+              </mat-form-field>
+              <p></p>
+              <p></p>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="36px">
+              <p><b>Due Amount : </b></p>
+              <mat-form-field appearance="outline" [style.width.px]="200">
+                <input [readonly]="action=='view'" type="number" formControlName="dueAmount" matInput>
+              </mat-form-field>
+              <p></p>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+      <button *ngIf="action=='create'"  (click)="submit()" mat-raised-button color="primary" class="m-2">Submit</button>
+      <button *ngIf="action=='edit'"  (click)="submit()" mat-raised-button color="primary" class="m-2">Update</button>
+    </mat-card>
+  </form>
+</mat-card>
+<br>
