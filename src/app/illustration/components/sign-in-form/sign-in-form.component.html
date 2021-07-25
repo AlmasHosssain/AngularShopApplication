@@ -1,0 +1,36 @@
+
+<form [formGroup]="singIn" class="mt-5">
+  <div fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="9px">
+      <p class="formTitle">Email or Username</p>
+      <input class="inputBox"  formControlName="email" type="text" placeholder="e.g. email@domain.com">
+    </div>
+    <div class="mt-4" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="9px">
+      <p class="formTitle">Password</p>
+       <div fxLayout="row">
+        <input class="inputBox" formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Enter your password">
+        <button class="btnBox" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+       </div>
+    </div>
+    <div class="mt-3" fxLayout="row" fxLayoutAlign="space-between start">
+        <mat-checkbox disableRipple="true   " formControlName="remember" >Remember me</mat-checkbox>
+        <div>
+            <a class="forgetPassWord">Forgot your password?</a>
+        </div>
+    </div>
+    
+    <div class="button my-5">
+        <button mat-raised-button class="btnDesign">Sign In</button>
+    </div>
+
+    <div>
+        <a class="copyRigth">
+            Copyright © 2021 Plabook. All rights reserved
+        </a>
+    </div>
+  </div>
+</form>
+
