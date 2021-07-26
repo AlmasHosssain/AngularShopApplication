@@ -1,0 +1,19 @@
+<div class="heading">
+  <div fxLayout="row">
+    <div (click)="first()" class="box pt-3 pb-2" [class.clickColor]="firstBox">
+      <p>1. Create classes</p>
+    </div>
+    <div (click)="second()" class="box pt-3 pb-2" [class.clickColor]="secondBox">
+      <p>2. Add Students</p>
+    </div>
+    <div (click)="third()" class="box pt-3 pb-2" [class.clickColor]="thirdBox">
+      <p>3. Print QR codes </p>
+    </div>
+  </div>
+</div>
+
+<div class="mainbody">
+    <app-step-one-master *ngIf="firstBox" ></app-step-one-master>
+    <app-step-two-master *ngIf="secondBox" ></app-step-two-master>
+    <app-step-three-master *ngIf="thirdBox" ></app-step-three-master>
+</div>

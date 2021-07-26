@@ -1,0 +1,27 @@
+<div class="mx-3">
+  <div fxLayout="row" class="mt-2 mb-1">
+    <p class="forgetText">Restore access code</p>
+    <button class="btnClass" (click)="close()">
+      <mat-icon class="icon">clear</mat-icon>
+    </button>
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div fxLayout="column" fxLayoutAlign="start">
+    <p class="text mt-4">
+        Please enter your email address and we’ll send you a link to restore your access code.
+    </p>
+    <form [formGroup]="restoreAccessCode">
+      <div class="mt-4" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="9px">
+        <p class="formTitle">Email address</p>
+        <input class="inputBox" formControlName="email" type="text" placeholder="e.g. email@domain.com">
+      </div>
+    </form>
+
+    <mat-divider class="my-5"></mat-divider>
+
+    <div class="button mb-3">
+      <button mat-raised-button class="btnDesign">Reset Password</button>
+    </div>
+  </div>
+</div>
+

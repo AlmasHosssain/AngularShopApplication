@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ForgetPasswordFormComponent } from './../forget-password-form/forget-password-form.component';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -11,7 +13,8 @@ export class SignInFormComponent implements OnInit {
   singIn!: FormGroup;
   hide = true;
   constructor(
-    private fb : FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -19,6 +22,14 @@ export class SignInFormComponent implements OnInit {
       email: [''],
       password: [''],
       remember : [false]
+    })
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ForgetPasswordFormComponent, {
+      width: '500px',
+      height: '550px',
+      panelClass : 'dialogBoxSize'
     })
   }
 

@@ -1,0 +1,92 @@
+.stepText {
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #4A8CFF;
+}
+
+.classText {
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 44px;
+  text-align: center;
+  color: #031228;
+}
+
+.classUnderText {
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #798CB0;
+  width: 349px;
+  height: 48px;
+}
+
+.classAddMainBox {
+  width: 420px;
+  height: 244px;
+  background: #F7FBFF;
+  border: 1px dashed #5D9CFF;
+  border-radius: 22px;
+}
+
+.btnDesign {
+  width: 58px;
+  height: 58px;
+  background: #5D9CFF;
+  border-radius: 18px;
+  color: white;
+  border: none;
+}
+
+.textUnderAddClass {
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #041029;
+}
+
+.lastTextUnderAddClass {
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  color: #798CB0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nextBtnDesign {
+  background: #5D9CFF;
+  border-radius: 16px;
+  width: 420px;
+  height: 58px;
+  border: none;
+  color: white;
+}
+
+.copyRigth {
+  height: 22px;
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #798CB0;
+  cursor: pointer;
+}

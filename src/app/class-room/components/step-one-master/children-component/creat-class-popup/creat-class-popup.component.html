@@ -1,0 +1,24 @@
+<div class="mx-3">
+    <div fxLayout="row" class="mt-2 mb-1">
+      <p class="forgetText">Restore access code</p>
+      <button class="btnClass" (click)="close()">
+        <mat-icon class="icon">clear</mat-icon>
+      </button>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+    <div fxLayout="column" fxLayoutAlign="start">
+      <p class="text pt-4">Enter the details for your new class below.</p>
+      <form [formGroup]="classNameForm">
+        <div class="mt-3" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="9px">
+          <p class="formTitle">Class name</p>
+          <input class="inputBox" formControlName="class" type="text" placeholder="Enter class name">
+        </div>
+      </form>
+  
+      <mat-divider class="my-5"></mat-divider>
+  
+      <div class="button mb-3">
+        <button mat-raised-button class="btnDesign">Create class</button>
+      </div>
+    </div>
+  </div>
