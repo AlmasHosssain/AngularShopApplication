@@ -24,4 +24,8 @@ export class StepOneMasterComponent implements OnInit {
     })
   }
 
+  operation() {
+    
+  }
+
 }

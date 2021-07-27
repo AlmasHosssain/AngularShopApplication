@@ -4,6 +4,37 @@
         <p class="classText">Create classes</p>
         <p class="classUnderText">Create classes and manage all the assignments that your students need.</p>
 
+
+        <div class="classList mt-3">
+            <div class="py-1 mx-2" fxLayout="row" fxLayoutAlign="space-between end">
+                <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+                    <div class="imgClass"></div>
+                    <div class="className">
+                        Group 1-A
+                    </div>
+                </div>
+                <button class="operationBtnClass" mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon class="icon">more_horiz</mat-icon>
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Menu Item -->
+
+        <mat-menu  class="customize" #menu="matMenu" xPosition="before">
+            <button mat-menu-item>
+              <div class="editBlock"></div>
+            </button>
+            <mat-divider class="divider ml-3"></mat-divider>
+            <button mat-menu-item>
+                <div class="dleteBlock"></div>
+            </button>
+          </mat-menu>
+
+
+
+
         <div class="classAddMainBox my-4 "  fxLayout="column wrap" fxLayoutAlign="center center">
             <button class="btnDesign">
                 <mat-icon class="pt-2">add</mat-icon>

@@ -90,3 +90,71 @@
   color: #798CB0;
   cursor: pointer;
 }
+
+.classList {
+  width: 420px;
+  height: 58px;
+  background: #FFFFFF;
+  border: 1px solid #E2EAF3;
+  border-radius: 16px;
+}
+
+.operationBtnClass {
+  border: 1px solid #E2EAF3;
+  box-sizing: border-box;
+  border-radius: 12px;
+  backdrop-filter: blur(40px);
+  background: #FFFFFF;
+  width: 44px;
+  height: 44px;
+  margin-left: 24%;
+  margin-top: -7px;
+}
+
+.icon {
+  padding-right: 2px;
+}
+
+.imgClass {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background-image: url("../../../../assets/images/Icon.png");
+  background-size: cover;
+}
+
+.className {
+  font-family: Satoshi;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.01em;
+  color: #041029;
+}
+
+::ng-deep .customize {
+  margin-top: 10px;
+  width: 174px;
+  height: 116px;
+  background: #FFFFFF;
+  border: 1px solid #E2EAF3;
+  box-shadow: 0px 4px 24px rgba(30, 63, 88, 0.03);
+  border-radius: 12px !important;
+}
+
+.editBlock{
+  width:70%;
+  height: 22px;
+  background-image: url("../../../../assets/images/edit.png");
+}
+
+.dleteBlock{
+  width:80%;
+  height: 22px;
+  background-image: url("../../../../assets/images/delete.png");
+}
+
+.divider{
+  width: 130px !important;
+}
